@@ -54,3 +54,10 @@ h1 {
   width: 100%;
   border-radius: 20px;
 }
+
+.destination {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: .5em;
+}
