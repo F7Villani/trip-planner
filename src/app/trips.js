@@ -1,7 +1,10 @@
 const trips = [
     {
         "id": 1,
-        "destination": "Itália",
+        "destination": {
+            "country": "Itália",
+            "city": "Roma"
+        },
         "departureDate": "11/11/2024",
         "returnDate": "01/12/24",
         "cost": "5000",
@@ -9,7 +12,10 @@ const trips = [
     },
     {
         "id": 2,
-        "destination": "Itália",
+        "destination": {
+            "country": "Itália",
+            "city": "Roma"
+        },
         "departureDate": "11/11/2024",
         "returnDate": "01/12/24",
         "cost": "5000",
@@ -17,7 +23,10 @@ const trips = [
     },
     {
         "id": 3,
-        "destination": "Itália",
+        "destination": {
+            "country": "Itália",
+            "city": "Roma"
+        },
         "departureDate": "11/11/2024",
         "returnDate": "01/12/24",
         "cost": "5000",
@@ -25,7 +34,10 @@ const trips = [
     },
     {
         "id": 4,
-        "destination": "Itália",
+        "destination": {
+            "country": "Itália",
+            "city": "Roma"
+        },
         "departureDate": "11/11/2024",
         "returnDate": "01/12/24",
         "cost": "5000",

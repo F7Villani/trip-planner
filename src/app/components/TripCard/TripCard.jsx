@@ -9,16 +9,17 @@ function TripCard(props) {
   const currencyFormatter = new Intl.NumberFormat('pt-BR', formatOptions);
 
   return (
-    <div className="trip-card">
-      <Image src={props.imgUrl}/>
+    <div className="card trip-card">
+      <img src={props.imgUrl}></img>
       <div className='information'>
-        <div className='destination'>
-          <PlaceRoundedIcon style={{color: "#B8346A"}} />
-          <h2>{props.destination}</h2>
+        <div className='country'>
+          <PlaceRoundedIcon className='icon' style={{color: "#B8346A"}} />
+          <h2>{props.destination.country}</h2>
         </div>
+        <h3>{props.destination.city}</h3>
         <div className='flex'>
           <div className='departure-date'>
-            <TodayIcon />
+            <TodayIcon className='icon' />
             <p>{props.departureDate}</p>
           </div>   
           <p>{currencyFormatter.format(props.cost)}</p>

@@ -22,8 +22,18 @@ h1 {
   color: black;
 }
 
+h2 {
+  margin: 0;
+  font-size: 1em;
+}
+
+h3 {
+  margin: 0;
+}
+
 p {
   margin: 0;
+  font-size: .8em;
 }
 
 .logo {
@@ -42,4 +52,14 @@ p {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2em;
+}
+
+.card {
+  width: 15em;
+  height: 15em;
+  border-radius: 20px;
+  background: #ebebeb;
+  box-shadow: 5px 5px 39px #b1b1b1,
+    -5px -5px 39px #ffffff;
+  padding: .8em;
 }
