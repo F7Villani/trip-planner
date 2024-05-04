@@ -1,0 +1,56 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  margin: 2em;
+  gap: 1em;
+}
+
+h1 {
+  margin: 0;
+}
+
+.logo {
+  width: 3em;
+  height: 3em;
+}
+
+.waves>* {
+  opacity: .6;
+  position: fixed;
+  bottom: 0;
+}
+
+.trip-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.trip-card {
+  width: 20em;
+  height: 18em;
+  border-radius: 20px;
+  background: #dfdfdf;
+  box-shadow: 5px 5px 39px #b1b1b1,
+    -5px -5px 39px #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .8em;
+}
+
+.trip-card > img {
+  width: 100%;
+  border-radius: 20px;
+}
