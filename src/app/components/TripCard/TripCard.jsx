@@ -1,5 +1,6 @@
 import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
 import TodayIcon from '@mui/icons-material/Today';
+import Image from 'next/image';
 import './style.css';
 
 function TripCard(props) {
@@ -9,7 +10,7 @@ function TripCard(props) {
 
   return (
     <div className="trip-card">
-      <img src={props.imgUrl}></img>
+      <Image src={props.imgUrl}/>
       <div className='information'>
         <div className='destination'>
           <PlaceRoundedIcon style={{color: "#B8346A"}} />

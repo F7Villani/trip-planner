@@ -1,11 +1,12 @@
 import TripCard from "./components/TripCard/TripCard";
 import trips from "./trips";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <>
       <header>
-        <img className="logo" src="./trip-planner-logo.png"></img>
+        <Image className="logo" src="./trip-planner-logo.png"/>
         <h1>Trip Planner</h1>
       </header>
       <div className="trip-list">
@@ -22,9 +23,9 @@ export default function Home() {
       }
       </div>
       <div className="waves">
-        <img src="./waves/wave.svg"></img>
-        <img src="./waves/wave2.svg"></img>
-        <img src="./waves/wave3.svg"></img>
+        <Image src="./waves/wave.svg" />
+        <Image src="./waves/wave2.svg"/>
+        <Image src="./waves/wave3.svg"/>
       </div>
     </>
   );
