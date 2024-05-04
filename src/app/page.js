@@ -1,4 +1,4 @@
-import TripCard from "./components/TripCard";
+import TripCard from "./components/TripCard/TripCard";
 import trips from "./trips";
 
 export default function Home() {
@@ -16,6 +16,7 @@ export default function Home() {
             imgUrl={trip.imgUrl}
             destination={trip.destination}
             cost={trip.cost}
+            departureDate={trip.departureDate}
           />
         })
       }
