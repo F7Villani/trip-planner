@@ -25,11 +25,6 @@ export default function Home() {
       }
       <AddTripCard onClick={() => router.push('/create-trip')} />
       </div>
-      <div className="waves">
-        <img src="./waves/wave.svg" ></img>
-        <img src="./waves/wave2.svg"></img>
-        <img src="./waves/wave3.svg"></img>
-      </div>
     </>
   );
 }

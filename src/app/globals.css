@@ -9,11 +9,15 @@ body {
   padding: 0;
 }
 
+main {
+  margin: 2em;
+}
+
 header {
   display: flex;
   align-items: center;
-  margin: 2em;
   margin-bottom: 3em;
+  margin: 2em;
   gap: 1em;
 }
 
@@ -67,4 +71,21 @@ p {
     -5px -5px 39px #ffffff;
   padding: .8em;
   cursor: pointer;
+}
+
+.input-wrapper input {
+  background-color: #ffffff;
+  
+  padding: 1rem;
+  font-size: 1rem;
+  width: 13em;
+  border-radius: 1rem;
+  color: #3E4756;
+  outline-color: #3E4756;
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: pointer;
+}
+
+.input-wrapper input:focus {
+  outline-color: #10A0FF;
 }
