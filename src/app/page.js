@@ -1,14 +1,16 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import AddTripCard from "./components/AddTripCard/AddTripCard";
 import TripCard from "./components/TripCard/TripCard";
 import trips from "./trips";
-import Image from "next/image";
 
 export default function Home() {
+
+  const router = useRouter();
+
   return (
     <>
-      <header>
-        <img className="logo" src="./trip-planner-logo.png"></img>
-        <h1>Trip Planner</h1>
-      </header>
       <div className="trip-list">
       {
         trips.map((trip) => {
@@ -21,6 +23,7 @@ export default function Home() {
           />
         })
       }
+      <AddTripCard onClick={() => router.push('/create-trip')} />
       </div>
       <div className="waves">
         <img src="./waves/wave.svg" ></img>
