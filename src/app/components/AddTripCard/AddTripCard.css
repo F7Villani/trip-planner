@@ -1,0 +1,15 @@
+.add-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.add-icon {
+    font-size: 6em;
+    color: #10A0FF;
+}
+
+.add-card > p {
+    font-size: .9em;
+}
