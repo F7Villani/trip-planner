@@ -13,7 +13,7 @@ header {
   display: flex;
   align-items: center;
   margin: 2em;
-  margin-bottom: 4em;
+  margin-bottom: 3em;
   gap: 1em;
 }
 
@@ -41,6 +41,10 @@ p {
   height: 3em;
 }
 
+.waves > img {
+  z-index: -1;
+}
+
 .waves>* {
   opacity: .6;
   position: fixed;
@@ -62,4 +66,5 @@ p {
   box-shadow: 5px 5px 39px #b1b1b1,
     -5px -5px 39px #ffffff;
   padding: .8em;
+  cursor: pointer;
 }
