@@ -1,7 +1,6 @@
 import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
 import TodayIcon from '@mui/icons-material/Today';
-import Image from 'next/image';
-import './style.css';
+import './TripCard.css';
 
 function TripCard(props) {
 
