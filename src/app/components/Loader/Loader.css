@@ -1,64 +1,25 @@
 .loader {
   text-align: center;
-  width: 100%;
   position: relative;
   overflow: hidden;
-  max-width: 35rem;
-  height: 30rem;
-  margin: 0 auto;
-}
-
-.plane {
-  position: absolute;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.plane-img {
-  -webkit-animation: spin 2.5s linear infinite;
-  -moz-animation: spin 2.5s linear infinite;
-  animation: spin 2.5s linear infinite;
-}
-
-@-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-
-.earth-wrapper {
-  position: absolute;
-  margin: 0 auto;
-  width: 100%;
-  padding-top: 2.7rem;
+  width: 7em;
+  height: 7em;
 }
 
 .earth {
-  width: 160px;
-  height: 160px;
+  width: 60%;
+  height: 60%;
   background: url("../../../../public/world-map.png");
   border-radius: 100%;
-  background-size: 340px;
-  animation: earthAnim 12s infinite linear;
+  background-size: 8em;
+  background-size: calc(100% * 1.5);
+  animation: earthAnim 25s infinite linear;
   margin: 0 auto;
   border: 0px solid #CDD1D3;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 @keyframes earthAnim {
   0% {background-position-x: 0;}
-  100% {background-position-x: -340px;}
+  100% {background-position-x: -600px;}
 }
