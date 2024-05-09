@@ -8,19 +8,19 @@ import Place from "../models/Place";
 
 function CreateTripPage() {
 
-  const [place, setPlace]  = useState({});
+  const [place, setPlace]  = useState(new Place());
 
   const placeService = new GeoNamesService();
 
-  async function getPlaces(text){
+  async function getPlaces(text: string){
     return await placeService.getPlacesByText(text);
   }
 
-  function onSelectPlace(item){
-    setPlace(item);
+  function onSelectPlace(place: Place){
+    setPlace(place);
   }
 
-  function placeToString(place){
+  function placeToString(place: Place){
     return place.city + ', ' + place.country;
   }
 
