@@ -3,7 +3,7 @@ import './AddTripCard.css';
 
 function AddTripCard(props){
     return(         
-        <div onClick={props.onClick} className="card add-card">
+        <div onClick={props.onClick} className="card add-card shadow">
             <p>Organize sua próxima viagem</p>
             <AddCircleRoundedIcon className='add-icon'/>        
         </div>

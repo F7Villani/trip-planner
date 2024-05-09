@@ -8,7 +8,7 @@ function TripCard(props) {
   const currencyFormatter = new Intl.NumberFormat('pt-BR', formatOptions);
 
   return (
-    <div className="card trip-card">
+    <div className="card trip-card shadow">
       <img src={props.imgUrl}></img>
       <div className='information'>
         <div className='country'>

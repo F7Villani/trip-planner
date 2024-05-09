@@ -26,7 +26,7 @@ function AutocompleteTextField(props) {
   }
 
   return (
-    <div className="search-box">
+    <div className="search-box shadow">
       <div className="row">
         <input autoComplete="false" type="text" value={searchText} onChange={onChangeText} />
         <button>
