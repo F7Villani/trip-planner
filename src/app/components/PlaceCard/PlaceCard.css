@@ -1,0 +1,39 @@
+.place-card {
+  cursor: auto;
+  width: auto;
+  height: auto;
+}
+
+.place-card h2 {
+  font-weight: 400;
+  font-size: .8em;
+}
+
+.place-card h3 {
+  font-size: 1.5em;
+}
+
+.place-card > img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.place-card  .information {
+  width: 90%;
+  margin: 1em .8em .5em .8em;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  justify-content: space-between;
+}
+
+.place-card .country {
+  display: flex;
+  align-items: center;
+  gap: .2em;
+  margin-bottom: .3em;
+}
+
+.place-card .icon {
+  font-size: 1em;
+}
