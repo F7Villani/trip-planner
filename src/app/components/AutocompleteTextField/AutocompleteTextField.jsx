@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import useDebounce from '../../utils/useDebounce';
+import useDebounce from '../../hooks/useDebounce';
 import './AutocompleteTextField.css';
 
 function AutocompleteTextField(props) {
 
   const [searchText, setSearchText] = useState('');
   const [items, setItems] = useState([]);
-  const getItemsDebounced = useDebounce(getItems, 1000);
+  const getItemsDebounced = useDebounce(getItems, props.delay);
 
   function onChangeText(event){
     setSearchText(event.target.value);
