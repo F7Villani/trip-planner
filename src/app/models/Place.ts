@@ -1,11 +1,11 @@
 class Place {
 
-  city: string;
-  country: string;
+  public city: string;
+  public country: string;
 
   constructor(
-    city: string,
-    country: string
+    city?: string,
+    country?: string
   ){
     this.city = city;
     this.country = country;
