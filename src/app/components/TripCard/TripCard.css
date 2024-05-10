@@ -40,13 +40,17 @@
   margin-bottom: .3em;
 }
 
-.flex {
+.trip-card .country .icon {
+  color: #B8346A;
+}
+
+.trip-card .icon{
+  font-size: 1em;
+}
+
+.trip-card .bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-}
-
-.trip-card .icon {
-  font-size: 1em;
 }

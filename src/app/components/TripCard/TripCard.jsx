@@ -12,11 +12,11 @@ function TripCard(props) {
       <img src={props.imgUrl}></img>
       <div className='information'>
         <div className='country'>
-          <PlaceRoundedIcon className='icon' style={{color: "#B8346A"}} />
+          <PlaceRoundedIcon className='icon'/>
           <h2>{props.destination.country}</h2>
         </div>
         <h3>{props.destination.city}</h3>
-        <div className='flex'>
+        <div className='bottom'>
           <div className='departure-date'>
             <TodayIcon className='icon' />
             <p>{props.departureDate}</p>
