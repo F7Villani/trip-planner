@@ -1,5 +1,29 @@
 .create-trip-grid {
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 2fr 2fr;
   gap: 1em;
+  margin: 1em 0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.title h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.title .icon {
+  background-color: #10A0FF;
+  padding: .4em;
+  border-radius: 100%;
+  color: #fff;
+}
+
+.forward-button-wrapper {
+  display: flex;
+  justify-content: end;
 }
