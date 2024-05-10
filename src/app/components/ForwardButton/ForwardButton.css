@@ -1,0 +1,18 @@
+.forward-button {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.forward-button .flex{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.forward-button .icon {
+  background-color: #10A0FF;
+  padding: .4em;
+  font-size: 1.5em;
+  border-radius: 100%;
+  color: #fff;
+}
