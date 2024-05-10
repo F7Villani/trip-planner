@@ -45,16 +45,6 @@ p {
   height: 3em;
 }
 
-.waves > img {
-  z-index: -1;
-}
-
-.waves>* {
-  opacity: .6;
-  position: fixed;
-  bottom: 0;
-}
-
 .trip-list {
   display: flex;
   flex-direction: row;
@@ -72,21 +62,4 @@ p {
   background: #ffffff;
   padding: .8em;
   cursor: pointer;
-}
-
-.input-wrapper input {
-  background-color: #ffffff;
-  
-  padding: 1rem;
-  font-size: 1rem;
-  width: 13em;
-  border-radius: 1rem;
-  color: #3E4756;
-  outline-color: #3E4756;
-  box-shadow: 0 0.4rem #dfd9d9;
-  cursor: pointer;
-}
-
-.input-wrapper input:focus {
-  outline-color: #10A0FF;
 }
