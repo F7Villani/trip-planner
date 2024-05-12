@@ -7,8 +7,6 @@ import AutocompleteTextField from "../components/AutocompleteTextField/Autocompl
 import Place from "../models/Place";
 import PexelsService from "../services/PexelsService";
 import PlaceCard from "../components/PlaceCard/PlaceCard";
-import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
-import ForwardButton from "../components/ForwardButton/ForwardButton";
 
 function CreateTripPage() {
 
@@ -28,30 +26,17 @@ function CreateTripPage() {
     setPlace(place);
   }
 
-  function placeToString(place: Place) {
-    return place.city + ', ' + place.country;
-  }
-
   return (
     <>
-      <div className="title">
-        <PlaceRoundedIcon className="icon" />
-        <h2>Para onde você quer ir?</h2>
-      </div>
       <div className="create-trip-grid">
         <div className="textfield-wrapper">
-          <AutocompleteTextField
+          <AutocompleteTextField<Place>
             delay={500}
-            itemToString={placeToString}
             handleItemClick={onSelectPlace}
             getItems={getPlaces} />
         </div>
         <p></p>
-        {place.isEmpty() ? null : <PlaceCard place={place}/>}
-      </div>  
-
-      <div className="forward-button-wrapper">
-        <ForwardButton onClick={() => console.log("botao clicado")} />
+        {place.isEmpty() ? null : <PlaceCard place={place} />}
       </div>
     </>
   );

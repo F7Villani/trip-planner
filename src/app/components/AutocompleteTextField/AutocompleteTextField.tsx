@@ -3,7 +3,13 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import useDebounce from '../../hooks/useDebounce';
 import './AutocompleteTextField.css';
 
-function AutocompleteTextField(props) {
+interface AutocompleteTextFieldProps<T> {
+  getItems(text: string): Promise<T[]>,
+  handleItemClick(item: T): any,
+  delay: number
+}
+
+function AutocompleteTextField<T>(props : AutocompleteTextFieldProps<T>) {
 
   const [searchText, setSearchText] = useState('');
   const [items, setItems] = useState([]);
@@ -14,8 +20,8 @@ function AutocompleteTextField(props) {
     getItemsDebounced();
   }
 
-  function handleItemClick(item){
-    setSearchText(props.itemToString(item));
+  function handleItemClick(item: T){
+    setSearchText(item.toString());
     setItems([]);
     props.handleItemClick(item);
   }
@@ -36,7 +42,7 @@ function AutocompleteTextField(props) {
       <div className="result-box" hidden={items.length === 0}>
         <ul>
           {
-            items.map((item, index) => <li key={`item-${index}`} onClick={() => handleItemClick(item)}>{props.itemToString(item)}</li>)
+            items.map((item, index) => <li key={`autoCompleteTextFieldItem-${index}`} onClick={() => handleItemClick(item)}>{item.toString()}</li>)
           }
         </ul>
       </div>
