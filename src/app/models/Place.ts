@@ -18,6 +18,10 @@ class Place {
     return !(this.city && this.country && this.urlPhoto);
   }
 
+  public toString() {
+    return this.city + ', ' + this.country;
+  }
+
 }
 
 export default Place;
