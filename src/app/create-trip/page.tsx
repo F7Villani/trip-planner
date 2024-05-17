@@ -7,10 +7,13 @@ import Place from "../models/Place";
 import PexelsService from "../services/PexelsService";
 import PlaceCard from "../components/PlaceCard/PlaceCard";
 import WeatherService from "../services/WeatherService";
+import { useRouter } from "next/navigation";
+import ForwardButton from "../components/ForwardButton/ForwardButton";
 
 function CreateTripPage() {
 
   const [place, setPlace] = useState(new Place());
+  const router = useRouter();
 
   const placeService = new WeatherService();
   const photoService = new PexelsService();
@@ -26,8 +29,6 @@ function CreateTripPage() {
     setPlace(place);
   }
 
-  console.log("RENDERIZOU")
-
   return (
     <>
       <div className="create-trip-grid">
@@ -40,6 +41,7 @@ function CreateTripPage() {
         <p></p>
         {place.isEmpty() ? null : <PlaceCard place={place} />}
       </div>
+      <ForwardButton onClick={() => router.push('/choose-date')} />
     </>
   );
 }
