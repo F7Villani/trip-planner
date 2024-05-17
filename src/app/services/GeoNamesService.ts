@@ -1,17 +1,17 @@
 import Place from '../models/Place';
-import PlaceService from './PlaceService';
+import IPlaceService from './interfaces/IPlaceService';
 import axios, { AxiosInstance } from "axios";
 
-class GeoNamesService implements PlaceService {
+class GeoNamesService implements IPlaceService {
 
   private _instance: AxiosInstance;
-  private _username: string;
+  private _username: string = process.env.NEXT_PUBLIC_GEONAMES_USERNAME;
+  private _baseUrl: string = "http://api.geonames.org/";
 
   constructor() {
     this._instance = axios.create({
-      baseURL: "http://api.geonames.org/",
+      baseURL: this._baseUrl,
     });
-    this._username = "f7villani";
   }
 
   async getPlacesByText(text: string){
