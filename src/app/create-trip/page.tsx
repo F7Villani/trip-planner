@@ -2,17 +2,17 @@
 
 import React, { useState } from "react";
 import './CreateTrip.css';
-import GeoNamesService from "../services/GeoNamesService";
 import AutocompleteTextField from "../components/AutocompleteTextField/AutocompleteTextField";
 import Place from "../models/Place";
 import PexelsService from "../services/PexelsService";
 import PlaceCard from "../components/PlaceCard/PlaceCard";
+import WeatherService from "../services/WeatherService";
 
 function CreateTripPage() {
 
   const [place, setPlace] = useState(new Place());
 
-  const placeService = new GeoNamesService();
+  const placeService = new WeatherService();
   const photoService = new PexelsService();
 
   async function getPlaces(text: string) {
@@ -25,6 +25,8 @@ function CreateTripPage() {
     place.urlPhoto = urlPhoto;
     setPlace(place);
   }
+
+  console.log("RENDERIZOU")
 
   return (
     <>
