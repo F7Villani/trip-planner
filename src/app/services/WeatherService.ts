@@ -24,7 +24,7 @@ class WeatherService implements IPlaceService {
     if (response.status === 200) {
       let places = [
         ...response.data.map((e) => {
-          return new Place(e.name, e.country);
+          return new Place(e.name, e.country, null, e.lat, e.lon);
         }),
       ];
 
