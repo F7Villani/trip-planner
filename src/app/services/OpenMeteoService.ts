@@ -22,7 +22,8 @@ class OpenMeteoService implements IPlaceService, IWeatherService {
       baseURL: this._weatherBaseUrl,
     });
   }
-  async getHistoricalWeatherByGeo(latitude: number, longitude: number, startDate: Date, endDate: Date, yearsAgo: number): Promise<Weather[]> {
+  
+  async getHistoricalWeatherByPeriod(latitude: number, longitude: number, startDate: Date, endDate: Date): Promise<Weather[]> {
     
     let formattedStartDate = dayjs(startDate).format("YYYY-MM-DD");
     let formattedEndDate = dayjs(endDate).format("YYYY-MM-DD");
@@ -53,6 +54,23 @@ class OpenMeteoService implements IPlaceService, IWeatherService {
     else {
       return [];
     }
+  }
+
+  async getHistoricalWeatherByPeriodAndYears(latitude: number, longitude: number, startDate: Date, endDate: Date, yearsAgo: number): Promise<Weather[][]> {
+
+    let response : Weather[][] = [];
+
+    for (let i = 1; i <= yearsAgo; i++) {
+      let startDateYearsAgo = dayjs(startDate).subtract(i, 'year').toDate();
+      let endDateYearsAgo = dayjs(endDate).subtract(i, 'year').toDate();
+
+      let weatherYearsAgo = await this.getHistoricalWeatherByPeriod(latitude, longitude, startDateYearsAgo, endDateYearsAgo);
+
+      response.push(weatherYearsAgo);
+      
+    }
+
+    return response;
   }
 
   async getPlacesByText(text: string){

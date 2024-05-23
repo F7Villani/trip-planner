@@ -2,7 +2,9 @@ import Weather from "../../models/Weather";
 
 interface IWeatherService {
 
-  getHistoricalWeatherByGeo(latitude: number, longitude: number, startDate: Date, endDate: Date, yearsAgo: number) : Promise<Weather[]>;
+  getHistoricalWeatherByPeriod(latitude: number, longitude: number, startDate: Date, endDate: Date) : Promise<Weather[]>;
+
+  getHistoricalWeatherByPeriodAndYears(latitude: number, longitude: number, startDate: Date, endDate: Date, yearsAgo: number) : Promise<Weather[][]>;
 
 }
 
