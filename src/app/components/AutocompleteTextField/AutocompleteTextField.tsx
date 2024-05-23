@@ -1,0 +1,53 @@
+import { useState } from 'react';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import useDebounce from '../../hooks/useDebounce';
+import './AutocompleteTextField.css';
+
+interface AutocompleteTextFieldProps<T> {
+  getItems(text: string): Promise<T[]>,
+  handleItemClick(item: T): any,
+  delay: number
+}
+
+function AutocompleteTextField<T>(props : AutocompleteTextFieldProps<T>) {
+
+  const [searchText, setSearchText] = useState('');
+  const [items, setItems] = useState([]);
+  const getItemsDebounced = useDebounce(getItems, props.delay);
+
+  function onChangeText(event){
+    setSearchText(event.target.value);
+    getItemsDebounced();
+  }
+
+  function handleItemClick(item: T){
+    setSearchText(item.toString());
+    setItems([]);
+    props.handleItemClick(item);
+  }
+
+  async function getItems(){
+    const items = await props.getItems(searchText);
+    setItems(items);
+  }
+
+  return (
+    <div className="search-box shadow">
+      <div className="row">
+        <input autoComplete="false" type="text" value={searchText} onChange={onChangeText} />
+        <button>
+          <SearchRoundedIcon className='search-icon' />
+        </button>
+      </div>
+      <div className="result-box" hidden={items.length === 0}>
+        <ul>
+          {
+            items.map((item, index) => <li key={`autoCompleteTextFieldItem-${index}`} onClick={() => handleItemClick(item)}>{item.toString()}</li>)
+          }
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default AutocompleteTextField;

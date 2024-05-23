@@ -1,17 +1,19 @@
-h2 {
+.trip-card {
+  width: 15em;
+  height: 15em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trip-card h2 {
   font-weight: 400;
   font-size: .8em;
 }
 
-h3 {
+.trip-card h3 {
   font-size: 1.5em;
   margin-bottom: 1em;
-}
-
-.trip-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .trip-card > img {
@@ -19,7 +21,7 @@ h3 {
   border-radius: 20px;
 }
 
-.information {
+.trip-card  .information {
   width: 90%;
   margin: 1em .8em;
   display: flex;
@@ -28,23 +30,27 @@ h3 {
   justify-content: space-between;
 }
 
-.country, .departure-date {
+.trip-card .country, .trip-card .departure-date {
   display: flex;
   align-items: center;
   gap: .2em;
 }
 
-.country {
+.trip-card .country {
   margin-bottom: .3em;
 }
 
-.flex {
+.trip-card .country .icon {
+  color: #B8346A;
+}
+
+.trip-card .icon{
+  font-size: 1em;
+}
+
+.trip-card .bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-}
-
-.icon {
-  font-size: 1em;
 }
