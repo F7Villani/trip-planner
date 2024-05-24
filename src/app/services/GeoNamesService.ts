@@ -22,7 +22,10 @@ class GeoNamesService implements IPlaceService {
     if (response.status === 200) {
       let places = [
         ...response.data.geonames.map((e) => {
-          return new Place(e.name, e.countryName);
+          let place = new Place();
+          place.city = e.name;
+          place.country = e.country;
+          return place;
         }),
       ];
 

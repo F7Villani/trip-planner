@@ -6,14 +6,13 @@ import AutocompleteTextField from "../components/AutocompleteTextField/Autocompl
 import Place from "../models/Place";
 import PexelsService from "../services/PexelsService";
 import PlaceCard from "../components/PlaceCard/PlaceCard";
-import { useRouter } from "next/navigation";
 import ForwardButton from "../components/ForwardButton/ForwardButton";
 import OpenMeteoService from "../services/OpenMeteoService";
+import Link from "next/link";
 
 function CreateTripPage() {
 
   const [place, setPlace] = useState(new Place());
-  const router = useRouter();
 
   const placeService = new OpenMeteoService();
   const photoService = new PexelsService();
@@ -41,7 +40,12 @@ function CreateTripPage() {
         <p></p>
         {place.isEmpty() ? null : <PlaceCard place={place} />}
       </div>
-      <ForwardButton onClick={() => router.push(`/choose-date?place=${place}`)} />
+      <Link href={{
+        pathname: '/choose-date',
+        query: {place: JSON.stringify(place)}
+      }}>
+        <ForwardButton />
+      </Link>
     </>
   );
 }
