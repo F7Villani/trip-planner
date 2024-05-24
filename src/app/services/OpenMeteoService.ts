@@ -36,7 +36,6 @@ class OpenMeteoService implements IPlaceService, IWeatherService {
 
     if(response.status === 200){
       let weathers = response.data.daily.time.map((day, index) => {
-        
         let variables = response.data.daily;
         let weather = new Weather();
         
@@ -81,7 +80,12 @@ class OpenMeteoService implements IPlaceService, IWeatherService {
 
     if (response.status === 200) {
       let places = response.data.results.map((e) => {
-          return new Place(e.name, e.country, null, e.latitude, e.longitude);
+          let place = new Place();
+          place.city = e.name;
+          place.country = e.country;
+          place.latitude = e.latitude;
+          place.longitude = e.longitude;
+          return place;
         })
       ;
 
