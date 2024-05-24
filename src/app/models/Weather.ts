@@ -1,5 +1,5 @@
 class Weather {
-  public day: Date;
+  public date: Date;
   public maxTemperature: number;
   public minTemperature: number;
   public meanTemperature: number;

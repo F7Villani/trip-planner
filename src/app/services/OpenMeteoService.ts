@@ -33,13 +33,12 @@ class OpenMeteoService implements IPlaceService, IWeatherService {
     let path = `archive?latitude=${latitude}&longitude=${longitude}&start_date=${formattedStartDate}&end_date=${formattedEndDate}&daily=${dailyVariables}`;
     
     let response = await this._weatherInstance.get(path);
-
     if(response.status === 200){
       let weathers = response.data.daily.time.map((day, index) => {
         let variables = response.data.daily;
         let weather = new Weather();
         
-        weather.day = day;
+        weather.date = day;
         weather.maxTemperature = variables.temperature_2m_max[index];
         weather.minTemperature = variables.temperature_2m_min[index];
         weather.meanTemperature = variables.temperature_2m_mean[index];
