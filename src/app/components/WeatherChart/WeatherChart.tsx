@@ -2,6 +2,10 @@ import dayjs from "dayjs";
 import Weather from "../../models/Weather";
 import { Bar,  ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
+interface WeatherModelChart{
+  date: Date,
+  temperature: number[]
+}
 
 interface WeatherChartProps {
   weathers: Weather[]
@@ -12,7 +16,7 @@ function WeatherChart({ weathers }: WeatherChartProps) {
     <ResponsiveContainer width="100%" height={400}>
     <ComposedChart data={weathers}>
       <XAxis
-        dataKey="day"
+        dataKey="date"
         tick={{ fontSize: 12, fill: '#555' }}
         tickFormatter={(date) => dayjs(date).format('DD/MM')}
       />
@@ -27,6 +31,12 @@ function WeatherChart({ weathers }: WeatherChartProps) {
         fill="#20B2AA"
         name="Precipitação"
       />
+      {/* <Bar
+        dataKey="temperature"
+        barSize={40}
+        fill="#20B2AA"
+        name="Precipitação"
+      /> */}
       <Line
         type="monotone"
         dataKey="maxTemperature"
@@ -40,7 +50,7 @@ function WeatherChart({ weathers }: WeatherChartProps) {
         color="#10A0FF"
         name="Mínima"
         dot={false}
-      />
+      /> 
     </ComposedChart>
   </ResponsiveContainer>
   );
