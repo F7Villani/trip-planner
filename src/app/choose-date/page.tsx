@@ -9,23 +9,29 @@ import dayjs from "dayjs";
 import IWeatherService from "../services/interfaces/IWeatherService";
 import OpenMeteoService from "../services/OpenMeteoService";
 import WeatherChart from "../components/WeatherChart/WeatherChart";
-
+import { useSearchParams } from "next/navigation";
+import Place from "../models/Place";
 
 function ChooseDate() {
 
   const [departureDay, setDepartureDay] = useState(dayjs());
-  const [leaveDay, setLeaveDay] = useState(departureDay.add(1, 'day'));
+  const [leaveDay, setLeaveDay] = useState(departureDay.add(10, 'day'));
   const [weathers, setWeathers] = useState([]);
+
+  const searchParams = useSearchParams();
+  const place : Place = Place.fromJson(searchParams.get('place'));
 
   const weatherService: IWeatherService = new OpenMeteoService()
 
   useEffect(() => {
     const fetchData = async () => {
-      let weathers = await weatherService.getHistoricalWeatherByPeriodAndYears(52.52, 13.41, departureDay.toDate(), leaveDay.toDate(), 3);
+      let weathers = await weatherService.getHistoricalWeatherByPeriodAndYears(place.latitude, place.longitude, departureDay.toDate(), leaveDay.toDate(), 3);
       setWeathers(weathers);
     };
 
-    fetchData();
+    if(!place.isEmpty()){
+      fetchData();
+    }
 
   }, [leaveDay]);
 
@@ -56,9 +62,16 @@ function ChooseDate() {
               <DateCalendar disablePast={true} value={leaveDay} onChange={onChangeLeaveDay} />
             </div>
           </div>
-          <div>
-            <WeatherChart weathers={weathers[0]} />
-          </div>
+          {
+            !place.isEmpty() ?
+            <div>
+              <h2>Histórico do clima</h2>
+              <p>Aqui você consegue ter uma ideia de como é o clima em {place.toString()}</p>
+              <WeatherChart weathers={weathers[0]} />
+            </div>
+            :
+            <div className=""></div>
+          }
         </div>
       </LocalizationProvider>
     </div>
