@@ -1,3 +1,5 @@
+import { json } from "stream/consumers";
+
 class Place {
 
   public city: string;
@@ -6,26 +8,24 @@ class Place {
   public latitude: number;
   public longitude: number;
 
-  constructor(
-    city?: string,
-    country?: string,
-    urlPhoto?: string,
-    latitude?: number,
-    longitude?: number
-  ){
-    this.city = city;
-    this.country = country;
-    this.urlPhoto = urlPhoto;
-    this.latitude = latitude;
-    this.longitude = longitude;
-  }
-
   public isEmpty() : boolean{
-    return !(this.city && this.country && this.urlPhoto);
+    return !(this.city && this.country && this.urlPhoto && this.latitude && this.longitude);
   }
 
-  public toString() {
+  public toString() : string {
     return this.city + ', ' + this.country;
+  }
+
+  public static fromJson(json: string) : Place{
+    const data = JSON.parse(json);
+    let place = new Place();
+    place.city = data.city;
+    place.country = data.country;
+    place.urlPhoto = data.urlPhoto;
+    place.latitude = data.latitude;
+    place.longitude = data.longitude;
+    return place;
+   
   }
 
 }
