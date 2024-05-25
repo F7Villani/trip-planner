@@ -77,7 +77,7 @@ class OpenMeteoService implements IPlaceService, IWeatherService {
 
     let response = await this._geoInstance.get(path);
 
-    if (response.status === 200) {
+    if (response.status === 200 && response.data.results) {
       let places = response.data.results.map((e) => {
           let place = new Place();
           place.city = e.name;
