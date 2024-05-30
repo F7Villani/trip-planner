@@ -45,3 +45,7 @@ p {
   padding: .8em;
   cursor: pointer;
 }
+
+.flex {
+  display:flex
+}
