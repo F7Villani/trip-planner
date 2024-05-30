@@ -40,7 +40,9 @@ function CreateTripPage() {
         <p></p>
         {place.isEmpty() ? null : <PlaceCard place={place} />}
       </div>
-      <Link href={{
+      <Link 
+        style={{color: 'none'}}
+        href={{
         pathname: '/choose-date',
         query: {place: JSON.stringify(place)}
       }}>
