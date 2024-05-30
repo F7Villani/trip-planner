@@ -1,16 +1,16 @@
 "use client"
 
 import React, { useState } from "react";
-import './CreateTrip.css';
-import AutocompleteTextField from "../components/AutocompleteTextField/AutocompleteTextField";
-import Place from "../models/Place";
-import PexelsService from "../services/PexelsService";
-import PlaceCard from "../components/PlaceCard/PlaceCard";
-import ForwardButton from "../components/ForwardButton/ForwardButton";
-import OpenMeteoService from "../services/OpenMeteoService";
+import './ChooseDestiny.css';
+import AutocompleteTextField from "../AutocompleteTextField/AutocompleteTextField";
+import Place from "../../models/Place";
+import PexelsService from "../../services/PexelsService";
+import PlaceCard from "../PlaceCard/PlaceCard";
+import ForwardButton from "../ForwardButton/ForwardButton";
+import OpenMeteoService from "../../services/OpenMeteoService";
 import Link from "next/link";
 
-function CreateTripPage() {
+function ChooseDestiny() {
 
   const [place, setPlace] = useState(new Place());
 
@@ -30,7 +30,7 @@ function CreateTripPage() {
 
   return (
     <>
-      <div className="create-trip-grid">
+      <div className="choose-date-grid">
         <div className="textfield-wrapper">
           <AutocompleteTextField<Place>
             delay={500}
@@ -40,16 +40,8 @@ function CreateTripPage() {
         <p></p>
         {place.isEmpty() ? null : <PlaceCard place={place} />}
       </div>
-      <Link 
-        style={{color: 'none'}}
-        href={{
-        pathname: '/choose-date',
-        query: {place: JSON.stringify(place)}
-      }}>
-        <ForwardButton />
-      </Link>
     </>
   );
 }
 
-export default CreateTripPage;
+export default ChooseDestiny;
