@@ -7,6 +7,7 @@ import AirplanemodeActiveRoundedIcon from '@mui/icons-material/AirplanemodeActiv
 import HotelRoundedIcon from '@mui/icons-material/HotelRounded';
 import { useState } from 'react';
 import ForwardButton from '../components/ForwardButton/ForwardButton';
+import ChooseDestiny from '../components/ChooseDestinty/ChooseDestiny';
 
 enum Step {
   destiny,
@@ -34,6 +35,15 @@ function NewTripPage(){
     })
   }
 
+  function stepPage(){
+    switch(step){
+      case Step.destiny:
+        return <ChooseDestiny />;
+      default:
+        return <div className=""></div>;
+    }
+  }
+
   return (
     <div className="new-trip">
       <div className="flex">
@@ -57,7 +67,9 @@ function NewTripPage(){
             </li>
           </ul>
         </div>
-        <div className="">{step.toString()}</div>
+        <div className="step-page">
+          { stepPage()}
+        </div>
       </div>
       <div className="button">
         <ForwardButton onClick={handleClickForwardButton} />
