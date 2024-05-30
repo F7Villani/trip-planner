@@ -1,15 +1,15 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import "./ChooseDate.css";
-import dayjs from "dayjs";
 import IWeatherService from "../services/interfaces/IWeatherService";
 import OpenMeteoService from "../services/OpenMeteoService";
 import WeatherChart from "../components/WeatherChart/WeatherChart";
 import { useSearchParams } from "next/navigation";
+import "./ChooseDate.css";
+import dayjs from "dayjs";
 import Place from "../models/Place";
 
 function ChooseDate() {
@@ -21,7 +21,7 @@ function ChooseDate() {
   const searchParams = useSearchParams();
   const place : Place = Place.fromJson(searchParams.get('place'));
 
-  const weatherService: IWeatherService = new OpenMeteoService()
+  const weatherService: IWeatherService = new OpenMeteoService();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,32 +49,32 @@ function ChooseDate() {
   }
 
   return (
-    <div className="choose-date">
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <div className="grid">
-          <div className="calendars">
-            <div className="calendar">
-              <h2>Dia da Ida</h2>
-              <DateCalendar disablePast={true} value={departureDay} onChange={onChangeDepartureDay} />
+      <div className="choose-date">
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <div className="grid">
+            <div className="calendars">
+              <div className="calendar">
+                <h2>Dia da Ida</h2>
+                <DateCalendar disablePast={true} value={departureDay} onChange={onChangeDepartureDay} />
+              </div>
+              <div className="calendar">
+                <h2>Dia da Volta</h2>
+                <DateCalendar disablePast={true} value={leaveDay} onChange={onChangeLeaveDay} />
+              </div>
             </div>
-            <div className="calendar">
-              <h2>Dia da Volta</h2>
-              <DateCalendar disablePast={true} value={leaveDay} onChange={onChangeLeaveDay} />
-            </div>
+            {
+              !place.isEmpty() ?
+              <div>
+                <h2>Histórico do clima</h2>
+                <p>Aqui você consegue ter uma ideia de como é o clima em {place.toString()}</p>
+                <WeatherChart weathers={weathers[0]} />
+              </div>
+              :
+              <div className=""></div>
+            }
           </div>
-          {
-            !place.isEmpty() ?
-            <div>
-              <h2>Histórico do clima</h2>
-              <p>Aqui você consegue ter uma ideia de como é o clima em {place.toString()}</p>
-              <WeatherChart weathers={weathers[0]} />
-            </div>
-            :
-            <div className=""></div>
-          }
-        </div>
-      </LocalizationProvider>
-    </div>
+        </LocalizationProvider>
+      </div>
   );
 }
 

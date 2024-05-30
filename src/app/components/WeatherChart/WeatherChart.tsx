@@ -12,14 +12,15 @@ interface WeatherChartProps {
 }
 
 function WeatherChart({ weathers }: WeatherChartProps) {
+
   return (
     <ResponsiveContainer width="100%" height={400}>
     <ComposedChart data={weathers}>
-      <XAxis
+      {/* <XAxis
         dataKey="date"
         tick={{ fontSize: 12, fill: '#555' }}
         tickFormatter={(date) => dayjs(date).format('DD/MM')}
-      />
+      /> */}
       <Tooltip 
         cursor={false} 
         labelFormatter={(date: Date) => dayjs(date).format("DD/MM/YYYY")}

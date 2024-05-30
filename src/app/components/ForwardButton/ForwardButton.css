@@ -1,6 +1,7 @@
 .forward-button {
   display: inline-block;
   cursor: pointer;
+  color: #3E4756
 }
 
 .forward-button .flex{
