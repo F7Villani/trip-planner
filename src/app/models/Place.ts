@@ -1,5 +1,3 @@
-import { json } from "stream/consumers";
-
 class Place {
 
   public city: string;
@@ -24,10 +22,8 @@ class Place {
     place.urlPhoto = data.urlPhoto;
     place.latitude = data.latitude;
     place.longitude = data.longitude;
-    return place;
-   
+    return place;  
   }
-
 }
 
 export default Place;
