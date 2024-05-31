@@ -8,17 +8,24 @@ import HotelRoundedIcon from '@mui/icons-material/HotelRounded';
 import { useState } from 'react';
 import ForwardButton from '../components/ForwardButton/ForwardButton';
 import ChooseDestiny from '../components/ChooseDestinty/ChooseDestiny';
+import ChooseDate from '../components/ChooseDate/ChooseDate';
+import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
+import DescriptionIcon from '@mui/icons-material/Description';
+import Place from '../models/Place';
 
 enum Step {
   destiny,
   date,
   trasport,
-  accommodation
+  accommodation,
+  culture,
+  summary
 }
 
 function NewTripPage(){
 
-  const [step, setStep] = useState(Step.destiny)
+  const [step, setStep] = useState<Step>(Step.destiny);
+  const [place, setPlace] = useState<Place>(new Place());
 
   function handleClickForwardButton(){
     setStep((current: Step) => {
@@ -38,9 +45,11 @@ function NewTripPage(){
   function stepPage(){
     switch(step){
       case Step.destiny:
-        return <ChooseDestiny />;
+        return <ChooseDestiny destiny={place} sendDestinty={(place) => setPlace(place)} />;
+      case Step.date:
+        return <ChooseDate place={place} />;
       default:
-        return <div className=""></div>;
+        return <p></p>;
     }
   }
 
@@ -64,6 +73,14 @@ function NewTripPage(){
             <li className='stepper-item' onClick={() => setStep(Step.accommodation)}>
               <HotelRoundedIcon className='icon' />
               <p>Acomodação</p>
+            </li>
+            <li className='stepper-item' onClick={() => setStep(Step.culture)}>
+              <TheaterComedyIcon className='icon' />
+              <p>Cultura</p>
+            </li>
+            <li className='stepper-item' onClick={() => setStep(Step.summary)}>
+              <DescriptionIcon className='icon' />
+              <p>Resumo</p>
             </li>
           </ul>
         </div>
