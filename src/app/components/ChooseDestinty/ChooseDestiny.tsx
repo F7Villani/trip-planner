@@ -6,13 +6,16 @@ import AutocompleteTextField from "../AutocompleteTextField/AutocompleteTextFiel
 import Place from "../../models/Place";
 import PexelsService from "../../services/PexelsService";
 import PlaceCard from "../PlaceCard/PlaceCard";
-import ForwardButton from "../ForwardButton/ForwardButton";
 import OpenMeteoService from "../../services/OpenMeteoService";
-import Link from "next/link";
 
-function ChooseDestiny() {
+interface ChooseDestinyProps {
+  sendDestinty: (place: Place) => void;
+  destiny: Place;
+}
 
-  const [place, setPlace] = useState(new Place());
+function ChooseDestiny({sendDestinty, destiny}: ChooseDestinyProps) {
+
+  const [place, setPlace] = useState(destiny);
 
   const placeService = new OpenMeteoService();
   const photoService = new PexelsService();
@@ -26,21 +29,22 @@ function ChooseDestiny() {
     const urlPhoto = await photoService.getUrlPhotoByText(query);
     place.urlPhoto = urlPhoto;
     setPlace(place);
+    sendDestinty(place);
   }
 
   return (
-    <>
-      <div className="choose-date-grid">
-        <div className="textfield-wrapper">
-          <AutocompleteTextField<Place>
-            delay={500}
-            handleItemClick={onSelectPlace}
-            getItems={getPlaces} />
-        </div>
-        <p></p>
-        {place.isEmpty() ? null : <PlaceCard place={place} />}
+    <div className="choose-date-grid">
+      <div className="textfield-wrapper">
+        <AutocompleteTextField<Place>
+          initialItem={place}
+          placeholder="Procure por uma cidade"
+          delay={500}
+          handleItemClick={onSelectPlace}
+          getItems={getPlaces} />
       </div>
-    </>
+      <p></p>
+      {place.isEmpty() ? null : <PlaceCard place={place} />}
+    </div>
   );
 }
 
