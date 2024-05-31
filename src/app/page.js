@@ -23,7 +23,7 @@ export default function Home() {
           />
         })
       }
-      <AddTripCard onClick={() => router.push('/create-trip')} />
+      <AddTripCard onClick={() => router.push('/new-trip')} />
       </div>
     </>
   );

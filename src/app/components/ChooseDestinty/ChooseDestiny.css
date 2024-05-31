@@ -1,8 +1,7 @@
-.create-trip-grid {
+.choose-date-grid {
   display: grid;
   grid-template-columns: 2fr 2fr;
   gap: 1em;
-  margin: 1em 0;
 }
 
 .title {

@@ -4,9 +4,11 @@ import useDebounce from '../../hooks/useDebounce';
 import './AutocompleteTextField.css';
 
 interface AutocompleteTextFieldProps<T> {
-  getItems(text: string): Promise<T[]>,
-  handleItemClick(item: T): any,
-  delay: number
+  initialItem: T;
+  placeholder: string;
+  getItems: (text: string) => Promise<T[]>;
+  handleItemClick: (item: T) => any;
+  delay: number;
 }
 
 function AutocompleteTextField<T>(props : AutocompleteTextFieldProps<T>) {
@@ -34,7 +36,7 @@ function AutocompleteTextField<T>(props : AutocompleteTextFieldProps<T>) {
   return (
     <div className="search-box shadow">
       <div className="row">
-        <input autoComplete="false" type="text" value={searchText} onChange={onChangeText} />
+        <input placeholder={props.placeholder} autoComplete="false" type="text" value={searchText} onChange={onChangeText} />
         <button>
           <SearchRoundedIcon className='search-icon' />
         </button>

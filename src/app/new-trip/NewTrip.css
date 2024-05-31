@@ -1,0 +1,38 @@
+.new-trip {
+  margin-top: 4em;
+}
+
+.new-trip .button {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.new-trip .step-page {
+   margin-left: 4em;
+   width: 100%;
+}
+
+.stepper-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stepper-menu li {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  cursor: pointer;
+  padding-bottom: 2em;
+}
+
+.stepper-menu p {
+  font-size: 1em;
+}
+
+.stepper-menu .icon {
+  color: #10A0FF;
+  font-size: 2em;
+}
+
