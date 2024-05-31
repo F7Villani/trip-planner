@@ -13,6 +13,10 @@
    width: 100%;
 }
 
+.stepper-menu {
+  width: 15%;
+}
+
 .stepper-menu ul {
   list-style: none;
   margin: 0;

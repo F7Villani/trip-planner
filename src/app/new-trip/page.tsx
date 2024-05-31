@@ -14,11 +14,13 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import Place from '../models/Place';
 import Step from '../enums/Step';
 import StepperItem from '../components/StepperItem/StepperItem';
+import TripDate from '../models/TripDate';
 
 function NewTripPage(){
 
   const [currentStep, setCurrentStep] = useState<Step>(Step.destiny);
   const [place, setPlace] = useState<Place>(new Place());
+  const [tripDate, setTripDate] = useState<TripDate>(new TripDate());
 
   function handleClickForwardButton(){
     let nextStep = getNextStep(currentStep);
@@ -45,7 +47,7 @@ function NewTripPage(){
       case Step.destiny:
         return <ChooseDestiny destiny={place} sendDestinty={(place) => setPlace(place)} />;
       case Step.date:
-        return <ChooseDate place={place} />;
+        return <ChooseDate place={place} sendTripDate={(tripDate) => setTripDate(tripDate)} />;
       default:
         return <p></p>;
     }
@@ -57,6 +59,8 @@ function NewTripPage(){
         return true;
       case Step.date:
         return !place.isEmpty();
+      case Step.transport:
+          return !tripDate.isEmpty();
       case Step.culture:
         return !place.isEmpty();
       default:
@@ -83,6 +87,7 @@ function NewTripPage(){
               step={Step.date}
               icon={<TodayRoundedIcon/>}
               enabled={isStepEnabled(Step.date)}
+              sublabel={!tripDate.isEmpty() ? tripDate.toString() : null}
             />
             <StepperItem 
               onClick={setCurrentStep} 

@@ -10,12 +10,14 @@ import WeatherChart from "../WeatherChart/WeatherChart";
 import "./ChooseDate.css";
 import dayjs from "dayjs";
 import Place from "../../models/Place";
+import TripDate from "../../models/TripDate";
 
 interface ChooseDateProps {
   place: Place;
+  sendTripDate: (tripDate: TripDate) => void;
 }
 
-function ChooseDate({place}: ChooseDateProps) {
+function ChooseDate({place, sendTripDate}: ChooseDateProps) {
 
   const [departureDay, setDepartureDay] = useState(dayjs());
   const [leaveDay, setLeaveDay] = useState(departureDay.add(10, 'day'));
@@ -31,7 +33,13 @@ function ChooseDate({place}: ChooseDateProps) {
 
     if(!place.isEmpty()){
       fetchData();
-    }
+    };
+
+    let tripDate = new TripDate()
+    tripDate.departureDay = departureDay;
+    tripDate.leaveDay = leaveDay;
+    
+    sendTripDate(tripDate);
 
   }, [leaveDay]);
 
