@@ -18,21 +18,3 @@
   margin: 0;
   padding: 0;
 }
-
-.stepper-menu li {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  cursor: pointer;
-  padding-bottom: 2em;
-}
-
-.stepper-menu p {
-  font-size: 1em;
-}
-
-.stepper-menu .icon {
-  color: #10A0FF;
-  font-size: 2em;
-}
-
