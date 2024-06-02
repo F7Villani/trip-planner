@@ -9,6 +9,7 @@ import { useState } from 'react';
 import ForwardButton from '../components/ForwardButton/ForwardButton';
 import ChooseDestiny from '../components/ChooseDestinty/ChooseDestiny';
 import ChooseDate from '../components/ChooseDate/ChooseDate';
+import ChooseTransport from '../components/ChooseTransport/ChooseTransport';
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 import DescriptionIcon from '@mui/icons-material/Description';
 import Place from '../models/Place';
@@ -16,20 +17,20 @@ import Step from '../enums/Step';
 import StepperItem from '../components/StepperItem/StepperItem';
 import TripDate from '../models/TripDate';
 
-function NewTripPage(){
+function NewTripPage() {
 
   const [currentStep, setCurrentStep] = useState<Step>(Step.destiny);
   const [place, setPlace] = useState<Place>(new Place());
   const [tripDate, setTripDate] = useState<TripDate>(new TripDate());
 
-  function handleClickForwardButton(){
+  function handleClickForwardButton() {
     let nextStep = getNextStep(currentStep);
-    if(isStepEnabled(nextStep)){
-        setCurrentStep(nextStep);
+    if (isStepEnabled(nextStep)) {
+      setCurrentStep(nextStep);
     }
   }
 
-  function getNextStep(step: Step) : Step{
+  function getNextStep(step: Step): Step {
     switch (step) {
       case Step.destiny:
         return Step.date;
@@ -42,25 +43,25 @@ function NewTripPage(){
     }
   }
 
-  function stepPage(){
-    switch(currentStep){
+  function stepPage() {
+    switch (currentStep) {
       case Step.destiny:
         return <ChooseDestiny destiny={place} sendDestinty={(place) => setPlace(place)} />;
       case Step.date:
         return <ChooseDate place={place} sendTripDate={(tripDate) => setTripDate(tripDate)} />;
       default:
-        return <p></p>;
+        return <ChooseTransport />;
     }
   }
 
-  function isStepEnabled(step: Step) : boolean {
-    switch(step){
+  function isStepEnabled(step: Step): boolean {
+    switch (step) {
       case Step.destiny:
         return true;
       case Step.date:
         return !place.isEmpty();
       case Step.transport:
-          return !tripDate.isEmpty();
+        return !tripDate.isEmpty();
       case Step.culture:
         return !place.isEmpty();
       default:
@@ -73,54 +74,60 @@ function NewTripPage(){
       <div className="flex">
         <div className="stepper-menu">
           <ul>
-            <StepperItem 
-              onClick={setCurrentStep} 
-              label="Destino" 
+            <StepperItem
+              selected={currentStep === Step.destiny}
+              onClick={setCurrentStep}
+              label="Destino"
               step={Step.destiny}
-              icon={<PlaceRoundedIcon/>}
+              icon={<PlaceRoundedIcon />}
               enabled={isStepEnabled(Step.destiny)}
               sublabel={!place.isEmpty() ? place.toString() : null}
             />
-            <StepperItem 
-              onClick={setCurrentStep} 
-              label="Data" 
+            <StepperItem
+              selected={currentStep === Step.date}
+              onClick={setCurrentStep}
+              label="Data"
               step={Step.date}
-              icon={<TodayRoundedIcon/>}
+              icon={<TodayRoundedIcon />}
               enabled={isStepEnabled(Step.date)}
               sublabel={!tripDate.isEmpty() ? tripDate.toString() : null}
             />
-            <StepperItem 
-              onClick={setCurrentStep} 
-              label="Transporte" 
+            <StepperItem
+              selected={currentStep === Step.transport}
+              onClick={setCurrentStep}
+              label="Transporte"
               step={Step.transport}
-              icon={<AirplanemodeActiveRoundedIcon/>}
+              icon={<AirplanemodeActiveRoundedIcon />}
               enabled={isStepEnabled(Step.transport)}
             />
-            <StepperItem 
-              onClick={setCurrentStep} 
-              label="Acomodação" 
+            <StepperItem
+              selected={currentStep === Step.accommodation}
+              onClick={setCurrentStep}
+              label="Acomodação"
               step={Step.accommodation}
-              icon={<HotelRoundedIcon/>}
+              icon={<HotelRoundedIcon />}
               enabled={isStepEnabled(Step.accommodation)}
             />
-            <StepperItem 
-              onClick={setCurrentStep} 
-              label="Cultura" 
+            <StepperItem
+              selected={currentStep === Step.culture}
+              onClick={setCurrentStep}
+              label="Cultura"
               step={Step.culture}
-              icon={<TheaterComedyIcon/>}
+              icon={<TheaterComedyIcon />}
               enabled={isStepEnabled(Step.culture)}
             />
-            <StepperItem 
-              onClick={setCurrentStep} 
-              label="Resumo" 
+            <StepperItem
+              selected={currentStep === Step.summary}
+              onClick={setCurrentStep}
+              label="Resumo"
               step={Step.summary}
-              icon={<DescriptionIcon/>}
+              icon={<DescriptionIcon />}
               enabled={isStepEnabled(Step.summary)}
             />
           </ul>
         </div>
         <div className="step-page">
-          { stepPage()}
+          {stepPage()}
         </div>
       </div>
       <div className="button">
