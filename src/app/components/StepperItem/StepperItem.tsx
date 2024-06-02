@@ -9,9 +9,10 @@ interface StepperItemProps {
   onClick: (step: Step) => void;
   icon: ReactElement;
   enabled?: boolean;
+  selected?: boolean;
 }
 
-function StepperItem({step, label, onClick, icon, enabled = true, sublabel: subLabel = null}: StepperItemProps){
+function StepperItem({step, label, onClick, icon, enabled = true, sublabel: subLabel = null, selected = false}: StepperItemProps){
 
   function handleClick(event : any) : void {
     if(enabled){
@@ -23,6 +24,9 @@ function StepperItem({step, label, onClick, icon, enabled = true, sublabel: subL
     let classes = ["stepper-item"];
     if(!enabled){
       classes.push("disabled");
+    }
+    if(selected){
+      classes.push("selected");
     }
     return classes.join(" ");
   }

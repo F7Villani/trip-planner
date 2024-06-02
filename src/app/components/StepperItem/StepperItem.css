@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   gap: 1em;
-  padding-bottom: 2em;
+  padding: 1em .5em;
+  border-radius: 15px;
 }
 
 .stepper-item * {
@@ -14,11 +15,15 @@
 }
 
 .stepper-item .icon * {
-  color: #10A0FF;
+  color: #616161;
   font-size: 2em;
 }
 
-.disabled .icon * {
+.stepper-item.selected .icon * {
+  color: #10A0FF;
+}
+
+.stepper-item.disabled .icon * {
   color: #c0c0c0
 }
 
