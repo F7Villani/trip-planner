@@ -39,7 +39,7 @@ function ChooseDestiny({sendDestinty, destiny}: ChooseDestinyProps) {
           initialItem={place}
           placeholder="Procure por uma cidade"
           delay={500}
-          handleItemClick={onSelectPlace}
+          onItemClick={onSelectPlace}
           getItems={getPlaces} />
       </div>
       <p></p>
