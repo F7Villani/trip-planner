@@ -7,7 +7,7 @@ interface AutocompleteTextFieldProps<T> {
   initialItem: T;
   placeholder: string;
   getItems: (text: string) => Promise<T[]>;
-  handleItemClick: (item: T) => any;
+  onItemClick: (item: T) => any;
   delay: number;
 }
 
@@ -17,7 +17,7 @@ function AutocompleteTextField<T>(props : AutocompleteTextFieldProps<T>) {
   const [items, setItems] = useState([]);
   const getItemsDebounced = useDebounce(getItems, props.delay);
 
-  function onChangeText(event){
+  function handleChangeText(event){
     setSearchText(event.target.value);
     getItemsDebounced();
   }
@@ -25,7 +25,7 @@ function AutocompleteTextField<T>(props : AutocompleteTextFieldProps<T>) {
   function handleItemClick(item: T){
     setSearchText(item.toString());
     setItems([]);
-    props.handleItemClick(item);
+    props.onItemClick(item);
   }
 
   async function getItems(){
@@ -36,7 +36,7 @@ function AutocompleteTextField<T>(props : AutocompleteTextFieldProps<T>) {
   return (
     <div className="search-box shadow">
       <div className="row">
-        <input placeholder={props.placeholder} autoComplete="false" type="text" value={searchText} onChange={onChangeText} />
+        <input placeholder={props.placeholder} autoComplete="false" type="text" value={searchText} onChange={handleChangeText} />
         <button>
           <SearchRoundedIcon className='search-icon' />
         </button>
