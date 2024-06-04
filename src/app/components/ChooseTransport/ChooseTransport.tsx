@@ -1,19 +1,24 @@
 import { useState } from "react";
-import AutocompleteTextField from "../AutocompleteTextField/AutocompleteTextField";
+import ComboBox from "../ComboBox/ComboBox";
 
-function ChooseTransport(){
+interface ChooseTransportProps {
+    sendTransport: (string) => void;
+}
+
+function ChooseTransport({sendTransport}: ChooseTransportProps){
 
     const [transport, setTransport] = useState('');
 
     const transports = ["Avião", "Carro", "Ônibus"];
 
-    async function getTransports(searchTerm: string) : Promise<string[]> {
-        return transports.filter((trasnport) => trasnport.indexOf(searchTerm) !== -1);
+    function handleItemClick(transport : string){
+        setTransport(transport);
+        sendTransport(transport);
     }
 
     return(
         <>
-            {<AutocompleteTextField<string> initialItem={""} onItemClick={setTransport} getItems={getTransports} delay={0} placeholder="Escolha seu meio de transporte" />}
+            <ComboBox<string> initialItem={""} onItemClick={handleItemClick} items={transports} placeholder="Escolha seu meio de transporte" />
             <p>{transport}</p>
         </>
     );

@@ -22,6 +22,7 @@ function NewTripPage() {
   const [currentStep, setCurrentStep] = useState<Step>(Step.destiny);
   const [place, setPlace] = useState<Place>(new Place());
   const [tripDate, setTripDate] = useState<TripDate>(new TripDate());
+  const [transport, setTransport] = useState("");
 
   function handleClickForwardButton() {
     let nextStep = getNextStep(currentStep);
@@ -50,7 +51,7 @@ function NewTripPage() {
       case Step.date:
         return <ChooseDate place={place} sendTripDate={(tripDate) => setTripDate(tripDate)} />;
       default:
-        return <ChooseTransport />;
+        return <ChooseTransport sendTransport={(transport) => setTransport(transport)} />;
     }
   }
 
@@ -99,6 +100,7 @@ function NewTripPage() {
               step={Step.transport}
               icon={<AirplanemodeActiveRoundedIcon />}
               enabled={isStepEnabled(Step.transport)}
+              sublabel={transport}
             />
             <StepperItem
               selected={currentStep === Step.accommodation}
